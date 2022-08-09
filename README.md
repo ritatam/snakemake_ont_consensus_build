@@ -8,7 +8,7 @@ The pipeline includes the following steps:
 3. <code>medaka consensus</code> for running consensus algorithm across assembly regions
 4. <code>medaka stitch</code> for collating results from step 3 to create consensus sequence
 
-Steps 2-4 (wrapped up in <code>medaka_polish.sh</code>) are the medaka polishing steps, and will be iterated for four rounds as advised by medaka documentation. The final consensus from the 4th polishing round will be renamed as *.final_consensus.fa.
+Steps 2-4 (wrapped up in <code>medaka_polish.sh</code>) are the medaka polishing steps, and will be iterated for four rounds as advised by medaka documentation. This snakemake script will automatically install medaka package (defined in <code>envs/medaka.yaml</code>) in your working directory without requiring admin priviledges. The final consensus from the 4th polishing round will be renamed as *.final_consensus.fa.
 
 At the end of pipeline, the final consensus sequences of all samples will be merged into a single FASTA file (<code>all_samples.final_consensus.fa</code>) in the output directory.
 
@@ -30,15 +30,19 @@ Paths and parameters can be edited in <code>config.yaml</code>.
 2. <code>output_dir</code>: Output directory to store *draft* and *polished* consensus sequences per sample (as subdirectories). All the intermediate files will be stored in the output sample/polish/intermediate_files directory. 
 3. <code>usearch_path</code>: Path to the USEARCH binary. Note: This has been already configured to use the USEARCH binary in the repo's external_program folder, so user will not need to download it independently.
 4. <code>usearch_id</code>: Minimum sequence identity for USEARCH read clustering, ranging between 0.0 and 1.0.
-5. <code>medaka_env</code>: Name of the conda environment with medaka package installed.
-6. <code>medaka_model</code>: Medaka model for consensus polishing, based on the basecaller used. See medaka [documentation](https://github.com/nanoporetech/medaka#models) for details.
-7. <code>threads</code>: Number of threads to use in medaka polishing. 
+5. <code>medaka_model</code>: Medaka model for consensus polishing, based on the basecaller used. See medaka [documentation](https://github.com/nanoporetech/medaka#models) for details.
+6. <code>threads</code>: Number of threads to use in medaka polishing. 
 
 ## Executing the pipeline
-Dry-run the snakemake pipeline to print the commands and the corresponding i/o files, without actually running the pipeline.
 
-    snakemake -np
+Install the required conda environemnt without running the pipeline. Subsequent runs with flag <code>--use-conda</code> will utilise the local environment stored in your working directory (<code>/.snakemake/conda</code>) without requiring internet connection.
 
-Run the pipeline (for real!) and specify number of cores to use (e.g. 8 cores)
+    snakemake --use-conda --conda-create-envs-only
 
-    snakemake -j8
+Dry-run the pipeline to print the commands and the corresponding i/o files, without running the pipeline.
+
+    snakemake --use-conda -np
+
+Run the pipeline and specify number of cores to use (e.g. 8 cores)
+
+    snakemake -c8 
