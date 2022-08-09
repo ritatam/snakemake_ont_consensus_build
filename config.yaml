@@ -1,0 +1,26 @@
+##### input and output paths ####
+
+# the supplied input directory must contain a set of read files, each named after a sample (<sample>.fastq)
+input_reads_dir: "/media/ssd/rita/github/snakemake_ont_consensus_build/reads"
+
+# outdir to store draft and polished consensus for all samples
+output_dir: "/media/ssd/rita/github/snakemake_ont_consensus_build/results"
+
+
+
+#### usearch settings ####
+
+# Path to USEARCH binary. Already configured to use the USEARCH binary in the external_program dir as part of the repo, so users will not need to download independently. Change this only when the user have installed it else where.
+usearch_path: "./external_program/usearch11.0.667_i86linux32"
+
+# minimum sequence identity for read clustering
+usearch_id: 0.75
+
+
+
+#### medaka polish pipeline settings ####
+
+# medaka model for consensus polishing
+medaka_model: "r941_min_sup_g507"
+
+threads: 8
