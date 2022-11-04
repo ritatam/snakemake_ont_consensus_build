@@ -45,4 +45,4 @@ Dry-run the pipeline to print the commands and the corresponding i/o files, with
 
 Run the pipeline and specify number of cores to use (e.g. 8 cores)
 
-    snakemake -c8 
+    snakemake --use-conda -c8 
