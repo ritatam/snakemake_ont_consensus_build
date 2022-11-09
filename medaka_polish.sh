@@ -65,7 +65,8 @@ mkdir -p ${OUTPUT}
 echo "" ; echo "###### Starting medaka polishing ######"
 
 # extract sample name from draft filename
-SAMPLE=$( basename ${DRAFT} | cut -d. -f1)
+SAMPLE=$( basename ${DRAFT} )
+SAMPLE=${SAMPLE%.draft.fa}
 
 # run four polishing rounds
 for i in $( seq 1 4 ); do
