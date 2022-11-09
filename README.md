@@ -3,7 +3,7 @@ A mini snakemake pipeline for batch constructing consensus sequences from long n
 
 The pipeline includes the following steps:
 
-1. <code>usearch -clutser_fast</code> for clustering read sequences to find centroid with the largest cluster size (i.e. draft sequence)
+1. <code>usearch -cluster_fast</code> for clustering read sequences to find centroid with the largest cluster size (i.e. draft sequence)
 2. <code>mini_align</code> for aligning the reads to a draft/intermediate sequence
 3. <code>medaka consensus</code> for running consensus algorithm across assembly regions
 4. <code>medaka stitch</code> for collating results from step 3 to create consensus sequence
