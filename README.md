@@ -37,7 +37,7 @@ Paths and parameters can be edited in <code>config.yaml</code>.
 
 Install the required conda environemnt without running the pipeline. Subsequent runs with flag <code>--use-conda</code> will utilise the local environment stored in your working directory (<code>/.snakemake/conda</code>) without requiring internet connection.
 
-    snakemake --use-conda --conda-create-envs-only
+    snakemake --use-conda --conda-create-envs-only -c1
 
 Dry-run the pipeline to print the commands and the corresponding i/o files, without running the pipeline.
 
