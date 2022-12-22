@@ -20,7 +20,6 @@ def handle_equiv_ext(path):
 
 SAMPLES, READS_EXT = handle_equiv_ext(INDIR)
 
-
 rule all:
     input:
         expand(f"{OUTDIR}/{{sample}}/draft/{{sample}}.draft.fa", sample=SAMPLES),
@@ -47,7 +46,7 @@ rule usearch_centroids_cluster:
 # run medaka polish pipeline
 rule medaka_polish_pipeline:
     input:
-        reads = f"{INDIR}/{{sample}}.fastq",
+        reads = f"{INDIR}/{{sample}}{READS_EXT}",
         draft = f"{OUTDIR}/{{sample}}/draft/{{sample}}.draft.fa"
     output:
         polish_outdir = directory(f"{OUTDIR}/{{sample}}/polish"),
