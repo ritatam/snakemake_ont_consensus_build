@@ -1,10 +1,10 @@
 ##### input and output paths ####
 
 # the supplied input directory must contain a set of read files, each named after a sample (<sample>.fastq)
-input_reads_dir: "/media/ssd/rita/github/snakemake_ont_consensus_build/reads"
+input_reads_dir: "/path/to/input/read/dir"
 
 # outdir to store draft and polished consensus for all samples
-output_dir: "/media/ssd/rita/github/snakemake_ont_consensus_build/results"
+output_dir: "/path/to/output/dir"
 
 
 
